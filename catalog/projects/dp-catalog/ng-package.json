@@ -1,0 +1,15 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/dp-catalog",
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  },
+  "whitelistedNonPeerDependencies": [
+    "@bloomreach/spa-sdk",
+    "@bloomreach/ng-sdk",
+    "lodash",
+    "loadash",
+    "@types/lodash",
+    "@types/loadash"
+  ]
+}

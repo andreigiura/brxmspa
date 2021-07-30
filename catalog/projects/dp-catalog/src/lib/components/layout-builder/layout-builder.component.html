@@ -1,0 +1,45 @@
+<div *ngIf="documentReference" [ngClass]="{ 'has-edit-button': page.isPreview() }">
+    <ng-container [brManageContentButton]="documentReference" style="right: -50px;"></ng-container>
+    <div *ngFor="let row of documentData?.rows" class="row" [ngClass]="row.grid">
+        <div *ngFor="let column of row.columns" [ngClass]="column.grid">
+            <div [ngSwitch]="column.type" class="m-0">
+                <div *ngSwitchCase="'text'">
+                    <lib-text [eventsDocumentData]="eventsDocumentData" [page]="page"
+                        [documentReference]="column.document && page.getContent(column.document)"
+                        [documentData]="(column.document && page?.getContent(column.document)).getData()"></lib-text>
+                </div>
+
+                <div *ngSwitchCase="'banner'">
+                    <lib-banner [eventsDocumentData]="eventsDocumentData" [page]="page"
+                        [documentReference]="column.document && page.getContent(column.document)"
+                        [documentData]="(column.document && page?.getContent(column.document)).getData()"></lib-banner>
+                </div>
+
+                <div *ngSwitchCase="'form'">
+                    <lib-form-builder [eventsDocumentData]="eventsDocumentData" [page]="page"
+                        [documentReference]="column.document && page.getContent(column.document)"
+                        [documentData]="(column.document && page?.getContent(column.document)).getData()">
+                    </lib-form-builder>
+                </div>
+
+                <div *ngSwitchCase="'teaser'">
+                    <lib-teaser [eventsDocumentData]="eventsDocumentData" [page]="page"
+                        [documentReference]="column.document && page.getContent(column.document)"
+                        [documentData]="(column.document && page?.getContent(column.document)).getData()"></lib-teaser>
+                </div>
+
+                <div *ngSwitchCase="'section'">
+                    <lib-layout-builder [eventsDocumentData]="eventsDocumentData" [page]="page"
+                        [documentReference]="column.document && page.getContent(column.document)"
+                        [documentData]="(column.document && page?.getContent(column.document)).getData()">
+                    </lib-layout-builder>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!documentReference">
+    Please add a LayoutBuilder document
+</div>

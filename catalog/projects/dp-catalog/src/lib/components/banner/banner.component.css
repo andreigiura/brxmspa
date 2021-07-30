@@ -1,0 +1,7 @@
+.banner-container {
+    border: solid 3px red;
+}
+
+.has-edit-button {
+    position: relative;
+}

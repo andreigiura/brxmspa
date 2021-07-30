@@ -1,0 +1,52 @@
+<form *ngIf="form" (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="container" *ngIf="documentReference" [ngClass]="{ 'has-edit-button': page.isPreview() }">
+        <ng-container [brManageContentButton]="documentReference"></ng-container>
+
+        <fieldset class="border p-4" *ngFor="let formBlock of documentData?.formBlocks">
+            <legend class="w-auto">{{formBlock?.blockName}}</legend>
+
+            <div class="row">
+                <div *ngFor="let question of formBlock.formInput" class="" [ngClass]="question.grid">
+                    <div>
+
+                        <ng-container [ngSwitch]="question.type">
+
+                            <div class="input-group mb-3" *ngSwitchCase="'text'">
+                                <div class="input-group-prepend">
+                                    <!-- <span class="input-group-text" id="basic-addon1">text</span> -->
+                                </div>
+                                <input [formControlName]="question.key" [id]="question.key" [type]="question.type"
+                                    class="form-control" [ngClass]="{'is-invalid': isValid(question) }"
+                                    placeholder="{{question.label}}">
+                            </div>
+
+                            <div class="input-group mb-3" *ngSwitchCase="'password'">
+                                <div class="input-group-prepend">
+                                    <!-- <span class="input-group-text" id="basic-addon1">text</span> -->
+                                </div>
+                                <input [formControlName]="question.key" [id]="question.key" [type]="question.type"
+                                    class="form-control" [ngClass]="{'is-invalid': isValid(question) }"
+                                    placeholder="{{question.label}}">
+                            </div>
+
+                        </ng-container>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </fieldset>
+
+
+        <div *ngIf="form" class="input-group-append col-12 mt-3 mr-0">
+            <button type="submit" [disabled]="!form.valid" class="btn btn-outline-secondary btn-block">Submit</button>
+        </div>
+    </div>
+</form>
+
+<div *ngIf="!documentReference">
+    Please add a FormBuilder document
+</div>

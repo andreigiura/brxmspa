@@ -1,0 +1,10 @@
+<div *ngIf="documentReference"  [ngClass]="{ 'has-edit-button': page.isPreview() }">
+    <ng-container [brManageContentButton]="documentReference"></ng-container>
+    <div><img class="img-fluid p-0" [src]="documentData.imageUrl"></div>
+</div>
+
+<div *ngIf="!documentReference">
+Please add a Banner document
+</div>
+
+  

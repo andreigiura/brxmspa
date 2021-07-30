@@ -1,0 +1,8 @@
+<br-page [configuration]="configuration" [mapping]="mapping" (state)="setVisitor($event)" class="d-flex flex-column vh-100">
+  <ng-template let-page="page">
+
+    <section style="box-shadow: -2px 10px 29px -12px rgba(0,0,0,0.56);" class="container p-0">
+      <ng-container brComponent="main"></ng-container>
+    </section>
+  </ng-template>
+</br-page>

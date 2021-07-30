@@ -1,0 +1,18 @@
+<div class="container" *ngIf="documentReference" [ngClass]="{ 'has-edit-button': page.isPreview() }">
+    <ng-container [brManageContentButton]="documentReference"></ng-container>
+    <div class="row">
+        <div style="border: solid 1px;" class="col-12">
+            <div style="margin-top: 20px; text-align: center;">{{documentData.title}}</div>
+            <div style="margin-top: 20px; text-align: center;">{{documentData.price}}</div>
+            <div style="margin-top: 20px; text-align: center;">{{documentData.description}}
+            </div>
+            <div style="margin-top: 20px; text-align: center;"><button
+                    (click)="trigger(documentData.onClickTriggerName.split(','), {productId: documentData.productId })"
+                    class="btn btn-outline-secondary">Choose</button></div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!documentReference">
+    Please add a Teaser document
+</div>

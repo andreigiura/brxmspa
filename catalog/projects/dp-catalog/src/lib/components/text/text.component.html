@@ -1,0 +1,11 @@
+<div *ngIf="documentReference" [ngClass]="{ 'has-edit-button': page.isPreview() }">
+    <ng-container [brManageContentButton]="documentReference"></ng-container>
+
+    <h1>{{documentData.title}}</h1>
+    <p>{{documentData.body}}</p>
+    
+</div>
+
+<div *ngIf="!documentReference">
+    Please add a Text document
+</div>
